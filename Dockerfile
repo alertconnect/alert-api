@@ -13,24 +13,16 @@ RUN yarn install --frozen-lockfile
 # Bundle app source
 COPY . .
 
-RUN yarn run prisma:generate
-
 RUN yarn build
 
 FROM base as prod-build
 
 # Set the NODE_ENV to production
 ENV NODE_ENV production
-
-# Set the timezone
 ENV TZ Europe/Rome
 
 # Create app directory
 WORKDIR /usr/src/app
-
-COPY prisma prisma
-
-RUN yarn run prisma:generate
 
 # Install app dependencies
 COPY package.json yarn.lock ./
@@ -41,3 +33,4 @@ COPY --from=base /usr/src/app/dist ./dist
 
 # Start the server using the production build
 CMD [ "node", "dist/main.js" ]
+
