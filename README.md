@@ -32,8 +32,8 @@ After releasing a new version, you need to push the new version to the registry.
 > Access to the registry is required.
 ```bash
 $ docker login registry.gitlab.com
-$ docker build -t registry.gitlab.com/prociv-sm/management-api:<VERSION> .
-$ docker push registry.gitlab.com/prociv-sm/management-api:<VERSION>
+$ docker build -t registry.gitlab.com/alertconnect/alert-api:<VERSION> .
+$ docker push registry.gitlab.com/alertconnect/alert-api:<VERSION>
 ```
 
 ## Contributing
