@@ -1,21 +1,21 @@
 <p align="center">
-  <a href="https://github.com/prociv-sm/management-api" target="blank"><img src="app_logo.png" width="500" alt="File Harbor App Logo" /></a>
+  <a href="https://github.com/alertconnect/alert-api" target="blank"><img src="app_logo.png" width="500" alt="AlertConnect Alert API App Logo" /></a>
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
 <p align="center">
-This project is a small service built with Nest.js dedicated to handling users, alerts, sectors, and other data for the Protezione Civile Nazionale alert systems.
+This project is a small service built with Nest.js dedicated to handling alerts, sectors, and other data for the Protezione Civile Nazionale alert systems.
 </p>
 <p align="center">
-    <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@andreacw5/fileharbor" alt="NPM Version" /></a>
-    <a href="https://github.com/prociv-sm/management-api/blob/main/LICENSE.md" target="_blank"><img alt="GitHub License" src="https://img.shields.io/github/license/andreacw5/fileharbor"></a>
+    <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/alertconnect/alert-api" alt="NPM Version" /></a>
+    <a href="https://github.com/alertconnect/alert-api/blob/main/LICENSE.md" target="_blank"><img alt="GitHub License" src="https://img.shields.io/github/license/alertconnect/alert-api"></a>
 </p>
 
 ## Getting Started
 Follow these instructions to set up the project on your local machine for development and testing purposes.
-- Clone the repository to your local machine: `git clone https://github.com/prociv-sm/management-api.git`
+- Clone the repository to your local machine: `git clone https://github.com/alertconnect/alert-api.git`
 - Install dependencies: `yarn install`
 - Start the application in development: `yarn start:dev`
 - Visit `http://localhost:3000` in your browser to use the application.
@@ -32,8 +32,8 @@ After releasing a new version, you need to push the new version to the registry.
 > Access to the registry is required.
 ```bash
 $ docker login registry.gitlab.com
-$ docker build -t registry.gitlab.com/prociv-sm/management-api:<VERSION> .
-$ docker push registry.gitlab.com/prociv-sm/management-api:<VERSION>
+$ docker build -t registry.gitlab.com/alertconnect/alert-api:<VERSION> .
+$ docker push registry.gitlab.com/alertconnect/alert-api:<VERSION>
 ```
 
 ## Contributing
@@ -47,20 +47,15 @@ Contributions are welcome! If you want to contribute to this project, please fol
 - Create a new Pull Request.
 
 ## Environment Variables
-| code                | description         | default value |
-|---------------------|---------------------|---------------|
-| APP_PORT            | App port            | 8080          |
-| DATABASE_HOST       | Database Host       | localhost     |
-| DATABASE_PORT       | Database Port       | 5432          |
-| DATABASE_NAME       | Database Name       | prociv        |
-| DATABASE_USERNAME   | Database Username   |               |
-| DATABASE_PASSWORD   | Database Password   |               |
-| JWT_SECRET          | JWT Secret          |               |
-| JWT_EXPIRATION_TIME | JWT Expiration time |               |
-| REDIS_HOST          | Redis Host          |               |
-| REDIS_PORT          | Redis Port          | 6385          |
-| REDIS_USERNAME      | Redis Username      | default       |
-| REDIS_PASSWORD      | Redis Password      |               |
+| code           | description    | default value |
+|----------------|----------------|---------------|
+| APP_PORT       | App port       | 8080          |
+| DATABASE_URL   | Database Host  | localhost     |
+| API_KEY        | Auth token     |               |
+| REDIS_HOST     | Redis Host     |               |
+| REDIS_PORT     | Redis Port     | 6385          |
+| REDIS_USERNAME | Redis Username | default       |
+| REDIS_PASSWORD | Redis Password |               |
 
 ## Versioning
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/andreacw5/url-manager-app/releases).
