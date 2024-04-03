@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import config from '../../configs/config.schema';
-import { AppService } from './app.service';
 import V1Module from '../v1/v1.module';
 import { AuthModule } from '../v1/auth/auth.module';
 import { configValidationSchema } from '../../configs/config.validation';
 import { BullModule } from '@nestjs/bull';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -24,6 +23,7 @@ import { BullModule } from '@nestjs/bull';
           port: configService.get('REDIS_PORT'),
           username: configService.get('REDIS_USERNAME'),
           password: configService.get('REDIS_PASSWORD'),
+          showFriendlyErrorStack: true,
         },
         defaultJobOptions: {
           removeOnComplete: true,
@@ -36,10 +36,18 @@ import { BullModule } from '@nestjs/bull';
       }),
       inject: [ConfigService],
     }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        type: 'postgres',
+        url: configService.get('DATABASE_URL'),
+        entities: ['dist/**/*.entity{.ts,.js}'],
+        synchronize: true,
+      }),
+      inject: [ConfigService],
+    }),
     V1Module,
     AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

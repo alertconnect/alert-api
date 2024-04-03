@@ -18,7 +18,7 @@ async function bootstrap() {
   const options = new DocumentBuilder()
     .setTitle('AlertConnector API')
     .setDescription('Rest API for AlertConnector service')
-    .setVersion('1.4.0')
+    .setVersion('1.0.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('/docs', app, document);
