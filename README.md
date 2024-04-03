@@ -1,21 +1,21 @@
 <p align="center">
-  <a href="https://github.com/prociv-sm/management-api" target="blank"><img src="app_logo.png" width="500" alt="File Harbor App Logo" /></a>
+  <a href="https://github.com/alertconnect/alert-api" target="blank"><img src="app_logo.png" width="500" alt="AlertConnect Alert API App Logo" /></a>
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
 <p align="center">
-This project is a small service built with Nest.js dedicated to handling users, alerts, sectors, and other data for the Protezione Civile Nazionale alert systems.
+This project is a small service built with Nest.js dedicated to handling alerts, sectors, and other data for the Protezione Civile Nazionale alert systems.
 </p>
 <p align="center">
-    <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@andreacw5/fileharbor" alt="NPM Version" /></a>
-    <a href="https://github.com/prociv-sm/management-api/blob/main/LICENSE.md" target="_blank"><img alt="GitHub License" src="https://img.shields.io/github/license/andreacw5/fileharbor"></a>
+    <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/alertconnect/alert-api" alt="NPM Version" /></a>
+    <a href="https://github.com/alertconnect/alert-api/blob/main/LICENSE.md" target="_blank"><img alt="GitHub License" src="https://img.shields.io/github/license/alertconnect/alert-api"></a>
 </p>
 
 ## Getting Started
 Follow these instructions to set up the project on your local machine for development and testing purposes.
-- Clone the repository to your local machine: `git clone https://github.com/prociv-sm/management-api.git`
+- Clone the repository to your local machine: `git clone https://github.com/alertconnect/alert-api.git`
 - Install dependencies: `yarn install`
 - Start the application in development: `yarn start:dev`
 - Visit `http://localhost:3000` in your browser to use the application.
