@@ -17,7 +17,11 @@ export class SectorsService {
    * Find all sectors
    */
   findAll(): Promise<Sector[]> {
-    return this.sectorsRepository.find();
+    return this.sectorsRepository.find({
+      order: {
+        code: 'ASC',
+      },
+    });
   }
 
   /**

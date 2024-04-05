@@ -39,6 +39,7 @@ export class AlertsConsumer {
         event: data.event,
         urgency: data.urgency,
         location_code: data.location_code,
+        location_desc: data.location_desc,
         severity: data.severity,
         certainty: data.certainty,
         onset: data.onset,

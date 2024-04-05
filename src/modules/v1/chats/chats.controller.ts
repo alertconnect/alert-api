@@ -8,6 +8,7 @@ import {
   Logger,
   NotFoundException,
   Post,
+  Put,
   Request,
   UseGuards,
 } from '@nestjs/common';
@@ -99,10 +100,29 @@ export class ChatsController {
   }
 
   /**
-   * Delete chat by telegram_id
+   * Update chat by id
    * @param request
    */
-  @Delete('/:telegram_id')
+  @Put('/:id')
+  @ApiHeaders([
+    {
+      name: 'X-API-KEY',
+      description: 'Auth API key',
+    },
+  ])
+  @ApiBasicAuth('api-key')
+  @UseGuards(AuthGuard('api-key'))
+  async update(@Request() request): Promise<any> {
+    this.logger.log(`Request to update chat with code: ${request.params.id}`);
+    this.logger.debug(request.body);
+    return await this.chatsService.update(request.params.id, request.body);
+  }
+
+  /**
+   * Delete chat by id
+   * @param request
+   */
+  @Delete('/:id')
   @ApiHeaders([
     {
       name: 'X-API-KEY',
@@ -112,9 +132,7 @@ export class ChatsController {
   @ApiBasicAuth('api-key')
   @UseGuards(AuthGuard('api-key'))
   async delete(@Request() request): Promise<any> {
-    this.logger.log(
-      `Request to delete chat with code: ${request.params.telegram_id}`,
-    );
-    return await this.chatsService.deleteOne(request.params.telegram_id);
+    this.logger.log(`Request to delete chat with code: ${request.params.id}`);
+    return await this.chatsService.deleteOne(request.params.id);
   }
 }
