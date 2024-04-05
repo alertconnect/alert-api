@@ -5,7 +5,6 @@ import {
   HttpCode,
   HttpStatus,
   Logger,
-  NotFoundException,
   Post,
   Request,
   UseGuards,
@@ -49,9 +48,7 @@ export class AlertsController {
       request.params.location,
     );
     if (alert.length === 0) {
-      throw new NotFoundException(
-        `No alerts found for location ${request.params.location}`,
-      );
+      return [];
     }
     return alert;
   }
@@ -70,9 +67,7 @@ export class AlertsController {
       request.params.type,
     );
     if (!alert) {
-      throw new NotFoundException(
-        `No alerts found for location ${request.params.location} and type ${request.params.type}`,
-      );
+      return new Alert();
     }
     return alert;
   }
