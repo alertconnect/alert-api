@@ -48,6 +48,12 @@ export class CreateAlertDto {
   location_code: string;
 
   @ApiProperty({
+    description: 'The description of the location',
+    example: 'Alta Valtellina',
+  })
+  location_desc: string;
+
+  @ApiProperty({
     description: 'The starting date of the alerts',
     example: '2022-08-18 10:00:00.000',
   })

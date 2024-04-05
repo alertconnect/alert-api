@@ -27,6 +27,9 @@ export class Alert extends BaseEntity {
   location_code: string;
 
   @Column()
+  location_desc: string;
+
+  @Column()
   onset: Date;
 
   @Column()
