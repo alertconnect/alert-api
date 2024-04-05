@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Chat } from './schemas/chat.entity';
 import { CreateChatDto } from './dto/create-chat.dto';
+import { UpdateChatDto } from './dto/update-chat.dto';
 
 @Injectable()
 export class ChatsService {
@@ -33,6 +34,15 @@ export class ChatsService {
     const chat = this.chatsRepository.create(data);
     await this.chatsRepository.save(data);
     return chat;
+  }
+
+  /**
+   * Update chat
+   * @param id
+   * @param data
+   */
+  async update(id: string, data: UpdateChatDto): Promise<any> {
+    return this.chatsRepository.update(id, data);
   }
 
   deleteOne(id: string): Promise<any> {
