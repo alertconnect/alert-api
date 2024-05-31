@@ -25,14 +25,13 @@ export class AlertsConsumer {
     const { data } = job;
     this.logger.log(`Incoming on alerts queue: ${JSON.stringify(data)}`);
     // Find if alert already exists
-    const alert = await this.alertsService.findByLocationIdentifierAndType(
+    const alert = await this.alertsService.findByLocationAndType(
       data.location_code,
-      data.identifier,
       data.type,
     );
     if (alert) {
-      this.logger.debug(
-        `Alert already exists with id ${alert.id}, updating with new data`,
+      this.logger.log(
+        `Alert already exists with id ${alert.id} and type ${alert.type}, updating with new data for location ${data.location_code} and type ${data.type}`,
       );
       await this.alertsService.update(alert.id, {
         type: data.type,
@@ -60,7 +59,7 @@ export class AlertsConsumer {
    */
   @OnQueueCompleted()
   onCompleted(job: Job) {
-    this.logger.debug(`Processing alert job completed: ${job.returnvalue}`);
+    this.logger.debug(`Processing alert job completed: ${job.id}`);
   }
 
   /**
