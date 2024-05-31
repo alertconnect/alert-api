@@ -1,6 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+  Unique,
+} from 'typeorm';
 
 @Entity()
+@Unique(['location_code', 'type'])
 export class Alert extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id!: string & { __brand: 'alertId' };
@@ -23,7 +30,7 @@ export class Alert extends BaseEntity {
   @Column()
   identifier: string;
 
-  @Column({ unique: true })
+  @Column()
   location_code: string;
 
   @Column()

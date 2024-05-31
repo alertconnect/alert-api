@@ -45,26 +45,6 @@ export class AlertsService {
   }
 
   /**
-   * Find alert by location, identifier and type
-   * @param {String} location
-   * @param {String} identifier
-   * @param {String} type
-   */
-  findByLocationIdentifierAndType(
-    location: string,
-    identifier: string,
-    type: string,
-  ): Promise<Alert | null> {
-    return this.alertRepository.findOne({
-      where: {
-        location_code: location,
-        identifier: identifier,
-        type: type,
-      },
-    });
-  }
-
-  /**
    * Find alert by location and type
    * @param {String} location
    * @param {String} type

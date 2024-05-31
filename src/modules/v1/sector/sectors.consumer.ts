@@ -45,7 +45,7 @@ export class SectorsConsumer {
    */
   @OnQueueCompleted()
   onCompleted(job: Job) {
-    this.logger.debug(`Processing sector job completed: ${job.returnvalue}`);
+    this.logger.debug(`Processing sector job completed: ${job.id}`);
   }
 
   /**
