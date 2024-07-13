@@ -69,6 +69,6 @@ export class AlertsConsumer {
    */
   @OnQueueError()
   onError(job: Job, error: Error) {
-    this.logger.error(`Processing alert job failed: ${error.message}`);
+    this.logger.error(`Processing alert job failed: ${error}`);
   }
 }

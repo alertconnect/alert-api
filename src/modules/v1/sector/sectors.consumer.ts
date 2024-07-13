@@ -55,6 +55,6 @@ export class SectorsConsumer {
    */
   @OnQueueError()
   onError(job: Job, error: Error) {
-    this.logger.error(`Processing sector job failed: ${error.message}`);
+    this.logger.error(`Processing sector job failed: ${error}`);
   }
 }
