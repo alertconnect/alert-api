@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Delete,
   Get,
@@ -15,6 +16,7 @@ import { ApiBasicAuth, ApiBody, ApiHeaders, ApiTags } from '@nestjs/swagger';
 import { CreateAlertDto } from './dto/create-alert.dto';
 import { AlertsProducerService } from './alerts.producer.service';
 import { AuthGuard } from '@nestjs/passport';
+import { RemoveOptions, SaveOptions } from 'typeorm';
 
 @ApiTags('Alerts')
 @Controller()
@@ -74,7 +76,7 @@ export class AlertsController {
 
   /**
    * Create a new alert
-   * @param request
+   * @param createAlertDto
    */
   @ApiHeaders([
     {
@@ -87,11 +89,13 @@ export class AlertsController {
   @ApiBody({ type: CreateAlertDto })
   @HttpCode(HttpStatus.CREATED)
   @Post('/enqueue')
-  async create(@Request() request): Promise<Alert> {
-    const alert = request.body;
-    this.logger.log(`Request to create alert: ${JSON.stringify(request.body)}`);
-    await this.alertsProducerService.sendMessage(request.body);
-    return alert;
+  async create(@Body() createAlertDto: CreateAlertDto) {
+    this.logger.log(
+      `Request to create alert: ${JSON.stringify(createAlertDto)}`,
+    );
+    await this.alertsProducerService.sendMessage(createAlertDto);
+
+    return HttpStatus.CREATED;
   }
 
   /**
