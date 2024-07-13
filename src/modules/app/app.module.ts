@@ -6,6 +6,7 @@ import { AuthModule } from '../v1/auth/auth.module';
 import { configValidationSchema } from '../../configs/config.validation';
 import { BullModule } from '@nestjs/bull';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { LoggerModule } from 'nestjs-pino';
 
 @Module({
   imports: [
@@ -14,6 +15,28 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       isGlobal: true,
       cache: true,
       validationSchema: configValidationSchema,
+    }),
+    LoggerModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        pinoHttp: {
+          transport: {
+            targets: [
+              {
+                target: '@logtail/pino',
+                options: { sourceToken: configService.get('LOGS_TOKEN') },
+              },
+              {
+                target: 'pino-pretty',
+              },
+            ],
+            options: {
+              singleLine: true,
+            },
+          },
+        },
+      }),
+      inject: [ConfigService],
     }),
     BullModule.forRootAsync({
       imports: [ConfigModule],

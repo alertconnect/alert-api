@@ -3,14 +3,16 @@ import { AppModule } from './modules/app/app.module';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { Logger } from '@nestjs/common';
+import { Logger } from 'nestjs-pino';
 
 async function bootstrap() {
-  const appOptions = { cors: true };
+  const appOptions = { cors: true, bufferLogs: true };
   const app = await NestFactory.create(AppModule, appOptions);
 
   app.useGlobalFilters(new HttpExceptionFilter());
   app.setGlobalPrefix('api');
+
+  app.useLogger(app.get(Logger));
 
   const configService = app.get(ConfigService);
 
@@ -28,5 +30,5 @@ async function bootstrap() {
 }
 
 bootstrap().then(() => {
-  Logger.log('App running now!');
+  console.log('App started');
 });

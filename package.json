@@ -20,6 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@logtail/pino": "^0.4.22",
     "@nestjs/axios": "^3.0.2",
     "@nestjs/bull": "^10.1.1",
     "@nestjs/common": "^10.3.8",
@@ -35,8 +36,11 @@
     "axios": "^1.7.2",
     "bull": "^4.12.9",
     "joi": "^17.13.1",
+    "nestjs-pino": "^4.1.0",
     "passport": "^0.7.0",
     "passport-headerapikey": "^1.2.2",
+    "pino-http": "^10.2.0",
+    "pino-pretty": "^11.2.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
     "typeorm": "^0.3.20",

@@ -56,6 +56,7 @@ Contributions are welcome! If you want to contribute to this project, please fol
 | REDIS_PORT     | Redis Port     | 6385          |
 | REDIS_USERNAME | Redis Username | default       |
 | REDIS_PASSWORD | Redis Password |               |
+| LOGS_TOKEN     | Logs token     |               |
 
 ## Versioning
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/andreacw5/url-manager-app/releases).
